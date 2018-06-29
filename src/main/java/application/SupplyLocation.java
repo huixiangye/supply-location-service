@@ -1,3 +1,5 @@
+package application;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -17,17 +19,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Data
 @RequiredArgsConstructor(onConstructor = @__(@PersistenceConstructor))
-@Document
+@Document //mongodb
 public class SupplyLocation {
     @Id
     private String id;
     private String address1;
     private String address2;
     private String city;
-    @JsonIgnore
-    private final
+
     @GeoSpatialIndexed
-    Point location;
+    @JsonIgnore
+    private final Point location;
+
     private String state;
     private String zip;
     private String type;
